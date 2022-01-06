@@ -11,16 +11,32 @@ public class backjoon_10809 {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         String S = br.readLine();
-        String[] splitStr = new String[S.length()];
-        String[] alphabet = {"a","b","c","e","f"}
+        int[] result = new int[26];
+
+        for (int i = 0; i < result.length; i++) {
+            result[i] = -1;
+        }
 
         for (int i = 0; i < S.length(); i++) {
-            splitStr[i] = String.valueOf(S.charAt(i));
+            char c = S.charAt(i);
+            int index = (int) (c - 97);
+            if (result[index] != -1) {
+                continue;
+            }
+            result[index] = i;
         }
 
-        for (int i = 0; i < splitStr.length; i++) {
-            for(int j=0; j<)
+        int count = 0;
+
+        for (int i : result) {
+            if (count == 26) {
+                System.out.print(i);
+                break;
+            }
+            System.out.print(i+" ");
+            count++;
         }
+
 
 
     }

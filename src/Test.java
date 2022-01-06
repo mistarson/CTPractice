@@ -1,49 +1,40 @@
 //import java.io.*;
 //import java.util.ArrayList;
+//import java.util.Arrays;
 //import java.util.List;
+//import java.util.StringTokenizer;
+//import java.util.stream.Collectors;
 //
-//public class Test {
+//class Main {
 //
 //    public static void main(String[] args) throws IOException {
 //
 //        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 //        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 //
-//        int X = Integer.parseInt(br.readLine());
-//        int count = 0;
+//        int totalCount = Integer.parseInt(br.readLine());
 //
-//        for (int i = 1; i <= X; i++) {
+//        for (int i = 0; i < totalCount; i++) {
 //
-//            if (i < 100) {
-//                count++;
-//                continue;
-//            }
+//            String S = br.readLine();
+//            StringTokenizer st = new StringTokenizer(S);
 //
-//            List<Integer> list = new ArrayList<>();
-//            String numStr = String.valueOf(i);
-//            for (int j = 0; j < numStr.length(); j++) {
-//                list.add(numStr.charAt(j) - '0');
-//            }
-//            int gongcha =  0;
-//            if (list.get(0) > list.get(1)) {
-//                gongcha = -(list.get(0) - list.get(1));
-//            } else {
-//                gongcha = list.get(1) - list.get(0);
-//            }
-//            for (int j = 1; j < list.size() - 1; j++) {
+//            int count = Integer.parseInt(st.nextToken());
 //
-//                if (list.get(j) + gongcha != list.get(j + 1)) {
-//                    break;
+//            String str = st.nextToken();
+//            List<String> list = new ArrayList<>();
+//
+//            for (int j = 0; j < str.length(); j++) {
+//                for (int z = 0; z < count; z++) {
+//                    list.add(String.valueOf(str.charAt(j)));
 //                }
-//                if (j == list.size()-2) count++;
-//
 //            }
+//
+//            String P = list.stream().map(String::valueOf).collect(Collectors.joining());
+//            System.out.println(P);
+//
 //
 //        }
-//        System.out.println(count);
-//
 //
 //    }
-//
-//
 //}
