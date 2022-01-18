@@ -16,6 +16,10 @@ public class backjoon_1713 {
             this.lastIndex = lastIndex;
         }
 
+        public int getNumber() {
+            return number;
+        }
+
         @Override
         public String toString() {
             return "student{" +
@@ -63,7 +67,7 @@ public class backjoon_1713 {
                 // 같은 후보가 없으면
                 if (!isSame) {
                     Collections.sort(students);
-                    students.remove(2);
+                    students.remove(students.size()-1);
                     students.add(new student(number, 1, i));
                 }
 
@@ -85,6 +89,8 @@ public class backjoon_1713 {
                 }
             }
         }
+
+        Collections.sort(students, Comparator.comparingInt(student::getNumber));
 
         for (int i = 0; i < students.size(); i++) {
             if (i != students.size() - 1) {
