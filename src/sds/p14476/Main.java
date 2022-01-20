@@ -38,6 +38,7 @@ public class Main {
         int maxIndex = 0;
         for (int i = 0; i < count; i++) {
             int gcd = 0;
+
             if (i == 0) {
                 gcd = gcdRtoL[1];
             } else if (i == count - 1) {
