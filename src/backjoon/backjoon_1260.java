@@ -36,23 +36,10 @@ public class backjoon_1260 {
         }
 
         dfs(V);
-        System.out.println(sb.toString());
-        sb.setLength(0);
+        sb.append("\n");
         Arrays.fill(visited, false);
+        bfs(V) ;
 
-        queue.add(V);
-        visited[V] = true;
-        sb.append(V + " ");
-        while (queue.size() != 0) {
-            Integer poll = queue.poll();
-            for (int i = 1; i < N + 1; i++) {
-                if (map[poll][i] && !visited[i]) {
-                    visited[i] = true;
-                    queue.add(i);
-                    sb.append(i + " ");
-                }
-            }
-        }
         System.out.println(sb.toString());
     }
 
@@ -64,6 +51,22 @@ public class backjoon_1260 {
         for (int i = 1; i < N + 1; i++) {
             if (map[node][i] && !visited[i]) {
                 dfs(i);
+            }
+        }
+    }
+
+    static void bfs(int node) {
+        queue.add(node);
+        visited[node] = true;
+        sb.append(node + " ");
+        while (queue.size() != 0) {
+            Integer poll = queue.poll();
+            for (int i = 1; i < N + 1; i++) {
+                if (map[poll][i] && !visited[i]) {
+                    visited[i] = true;
+                    queue.add(i);
+                    sb.append(i + " ");
+                }
             }
         }
     }
