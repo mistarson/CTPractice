@@ -34,7 +34,7 @@ public class Main {
                 int parent = Integer.parseInt(st.nextToken());
                 int child = Integer.parseInt(st.nextToken());
 
-                tree
+
 
             }
 

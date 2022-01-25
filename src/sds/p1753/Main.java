@@ -1,10 +1,7 @@
 package sds.p1753;
 
 import java.io.*;
-import java.util.Arrays;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Main {
 
@@ -25,6 +22,10 @@ public class Main {
 
         distance = new int[V + 1];
         Arrays.fill(distance,INF);
+        nodes = new ArrayList[V + 1];
+        for (int i = 1; i <= V; i++) {
+            nodes[i] = new ArrayList<>();
+        }
 
         for (int i = 0; i < E; i++) {
             st = new StringTokenizer(br.readLine());
@@ -44,7 +45,8 @@ public class Main {
                 bw.write("INF" + "\n");
             }
         }
-
+        bw.flush();
+        bw.close();
     }
 
     static void findShortestPath(int startNode) {
@@ -56,6 +58,13 @@ public class Main {
 
             if (currentNode.distance > distance[currentNode.node]) {
                 continue;
+            }
+
+            for (Node next : nodes[currentNode.node]) {
+                if (distance[next.node] > distance[currentNode.node] + next.distance) {
+                    distance[next.node] = distance[currentNode.node] + next.distance;
+                    route.add(new Node(next.node, distance[next.node]));
+                }
             }
         }
     }
