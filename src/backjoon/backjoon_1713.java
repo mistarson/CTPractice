@@ -4,104 +4,68 @@ import java.io.*;
 import java.util.*;
 
 public class backjoon_1713 {
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    static StringTokenizer st;
+    static int N, count;
+    static List<Student> students = new ArrayList<>();
 
-    static class student implements Comparable<student> {
-        int number = 0;
-        int voted = 0;
-        int lastIndex = 0;
+    public static void main(String[] args) throws IOException {
 
-        public student(int number, int voted, int lastIndex) {
+        N = Integer.parseInt(br.readLine());
+        count = Integer.parseInt(br.readLine());
+
+        st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < count; i++) {
+
+            int newStudentNumber = Integer.parseInt(st.nextToken());
+
+            if (!isSameStudent(newStudentNumber)) {
+                if (students.size() != N) {
+                    students.add(new Student(newStudentNumber, 1, i));
+                } else {
+                    Collections.sort(students);
+                    students.remove(students.size()-1);
+                    students.add(new Student(newStudentNumber, 1, i));
+                }
+            }
+        }
+        Collections.sort(students, Comparator.comparingInt(o -> o.number));
+
+        for (int i = 0; i < students.size(); i++) {
+            bw.write(students.get(i).number+" ");
+        }
+        bw.flush();
+    }
+
+    static class Student implements Comparable<Student>{
+        int number;
+        int voted;
+        int index;
+
+        public Student(int number, int voted, int index) {
             this.number = number;
             this.voted = voted;
-            this.lastIndex = lastIndex;
-        }
-
-        public int getNumber() {
-            return number;
+            this.index = index;
         }
 
         @Override
-        public String toString() {
-            return "student{" +
-                    "number=" + number +
-                    ", voted=" + voted +
-                    ", lastIndex=" + lastIndex +
-                    '}';
-        }
-
-        @Override
-        public int compareTo(student o) {
+        public int compareTo(Student o) {
             int comp1 = Integer.compare(o.voted, voted);
             if (comp1 == 0) {
-                return Integer.compare(o.lastIndex, lastIndex);
+                return Integer.compare(o.index, index);
             } else return comp1;
         }
     }
 
-    public static void main(String[] args) throws IOException {
-
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-
-        List<student> students = new ArrayList<>();
-
-        int picture = Integer.parseInt(br.readLine());
-        int count = Integer.parseInt(br.readLine());
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        boolean isSame = false;
-
-        for (int i = 0; i < count; i++) {
-
-            int number = Integer.parseInt(st.nextToken()); // 후보 받기
-
-            //사진틀이 모두 찼다면
-            if (students.size() == picture) {
-                isSame = false;
-                // 같은 후보가 있는 지 확인
-                for (int j = 0; j < students.size(); j++) {
-                    if (students.get(j).number == number) {
-                        students.get(j).voted++;
-                        isSame = true;
-                    }
-                }
-                // 같은 후보가 없으면
-                if (!isSame) {
-                    Collections.sort(students);
-                    students.remove(students.size()-1);
-                    students.add(new student(number, 1, i));
-                }
-
-            }
-
-            // 사진틀이 남는 경우
-            else {
-                isSame = false;
-                // 같은 후보가 있는 지 확인
-                for (int j = 0; j < students.size(); j++) {
-                    if (students.get(j).number == number) {
-                        students.get(j).voted++;
-                        isSame = true;
-                    }
-                }
-                // 같은 후보가 없으면
-                if (!isSame) {
-                    students.add(new student(number, 1, i));
-                }
-            }
-        }
-
-        Collections.sort(students, Comparator.comparingInt(student::getNumber));
-
+    static boolean isSameStudent(int newStudentNumber) {
         for (int i = 0; i < students.size(); i++) {
-            if (i != students.size() - 1) {
-                bw.write(String.valueOf(students.get(i).number) + " ");
-            } else {
-                bw.write(String.valueOf(students.get(i).number));
-
+            int studentNumber = students.get(i).number;
+            if (studentNumber == newStudentNumber) {
+                students.get(i).voted++;
+                return true;
             }
         }
-
-        bw.flush();
+        return false;
     }
-
 }
