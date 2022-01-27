@@ -31,6 +31,7 @@ public class backjoon_3055 {
         map = new char[R][C];
         dp = new int[R][C];
 
+
         //맵 초기화
         Point start = null;
         for (int i = 0; i < map.length; i++) {
