@@ -46,8 +46,8 @@ public class backjoon_1753 {
             }
 
             for (Node next : graph[current.node]) {
-                if (dist[next.node] > dist[current.node] + next.distance) {
-                    dist[next.node] = dist[current.node] + next.distance;
+                if (dist[next.node] > current.distance + next.distance) {
+                    dist[next.node] = current.distance + next.distance;
                     queue.add(new Node(next.node, dist[next.node]));
                 }
             }
