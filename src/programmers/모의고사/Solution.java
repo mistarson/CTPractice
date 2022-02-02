@@ -2,7 +2,7 @@ package programmers.모의고사;
 
 import java.util.*;
 
-public class Main {
+public class Solution {
     public static void main(String[] args) {
 
         int[] answers = {1, 2,3,4,5};
