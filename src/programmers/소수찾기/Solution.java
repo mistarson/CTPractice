@@ -1,47 +1,84 @@
 package programmers.소수찾기;
 
-import java.util.Arrays;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Solution {
 
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    static StringBuilder sb = new StringBuilder();
+    static int M;
+    static char[] numberArr;
+    static boolean[] isVisited;
+    static List<String> list = new ArrayList<>();
+
+
     public static void main(String[] args) {
-        solution("17");
+        System.out.println(solution("17"));
     }
 
     static int solution(String numbers) {
         int answer = 0;
-        int length = numbers.length();
-        StringBuilder sb = new StringBuilder();
+        M = numbers.length();
+        numberArr = new char[M];
+        isVisited = new boolean[M];
 
-        char[] numbersArr = new char[length];
-
-        for (int i = 0; i < length; i++) {
-            numbersArr[i] = numbers.charAt(i);
+        for (int i = 0; i < M; i++) {
+            numberArr[i] = numbers.charAt(i);
         }
 
-        for (int i = 0; i < length; i++) {
-            sb.append(numbers.charAt(i));
-            if (isPrime(sb.toString())) {
-                answer++;
-            }
-            for (int j = 0; j < length; j++) {
-                if (i == j) {
-                    continue;
-                }
-                sb.append(numbers.charAt(j));
-                
-            }
-            sb.setLength(0);
-        }
+        dfs(0);
+
+        answer = list.stream().distinct().collect(Collectors.toList()).size();
 
         return answer;
     }
 
+    static void dfs(int length) {
+
+        if (length > 0) {
+            if(isPrime(sb.toString())) {
+                list.add(sb.toString());
+            }
+        }
+
+        if (length == M) {
+            return;
+        }
+
+        for (int i = 0; i < M ; i++) {
+            if (!isVisited[i]) {
+                isVisited[i] = true;
+                sb.append(numberArr[i]);
+                if (sb.charAt(0) == '0') {
+                    sb.deleteCharAt(sb.length() - 1);
+                    isVisited[i] = false;
+                    continue;
+                }
+                dfs(length + 1);
+                isVisited[i] = false;
+                sb.deleteCharAt(sb.length() - 1);
+            }
+        }
+    }
+
     static boolean isPrime(String numbers) {
         int number = Integer.parseInt(numbers);
-        if (number % 2 != 0 && number % 3 != 0 && number % 5 != 0) {
-            return true;
+        if (number == 0 || number == 1) {
+            return false;
         }
-        return false;
+
+        for (int i = 2; i < number; i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
