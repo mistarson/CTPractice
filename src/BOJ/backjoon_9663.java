@@ -2,16 +2,14 @@ package BOJ;
 
 import java.io.*;
 
-//TODO 나중에 한번 더 풀 어 볼 것
 public class backjoon_9663 {
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-    static StringBuilder sb = new StringBuilder();
+
     static int N;
-    static boolean[] isused1 = new boolean[4];
-    static boolean[] isused2 = new boolean[7];
-    static boolean[] isused3 = new boolean[7];
+    static boolean[] isused1 = new boolean[40];
+    static boolean[] isused2 = new boolean[40];
+    static boolean[] isused3 = new boolean[40];
     static int count = 0;
 
     public static void main(String[] args) throws IOException {
