@@ -13,39 +13,17 @@ public class Solution {
     }
     static int solution(int[] people, int limit) {
         int answer = 0;
+        Arrays.sort(people);
 
-        List<Integer> peopleList = new ArrayList<>();
-
-        for (int n : people) {
-            peopleList.add(n);
-        }
-
-        Collections.sort(peopleList, Collections.reverseOrder());
-
-        Map<Integer, Integer> map = new HashMap<>();
-        int i=0;
-        for (int n : peopleList) {
-            map.put(i++, n);
-        }
-
-        while (!map.isEmpty()) {
-            int sum = 0;
-            List<Integer> removeList = new ArrayList<>();
-
-            for (int n : map.keySet()) {
-                if (sum + map.get(n) <= limit) {
-                    sum += map.get(n);
-                    removeList.add(n);
-                }
+        int min = 0;
+        for (int max = people.length - 1; min <= max; max--) {
+            if (people[max] + people[min] > limit) {
+                answer++;
+            } else {
+                answer++;
+                min++;
             }
-
-            for (int n : removeList) {
-                map.remove(n);
-            }
-
-            answer++;
         }
-
         return answer;
     }
 }
