@@ -1,5 +1,3 @@
-package programmers.기능개발;
-
 import java.util.*;
 
 public class Solution {
