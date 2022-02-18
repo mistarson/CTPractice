@@ -1,3 +1,5 @@
+package programmers.신고결과받기;
+
 import java.util.*;
 
 public class Solution {
@@ -44,3 +46,4 @@ public class Solution {
         return answer;
     }
 }
+
