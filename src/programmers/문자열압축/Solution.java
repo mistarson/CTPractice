@@ -1,3 +1,5 @@
+package programmers.문자열압축;
+
 import java.util.*;
 
 public class Solution {
