@@ -1,8 +1,6 @@
-package programmers.키패드누르기;
+package programmers.level1.키패드누르기;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Solution {

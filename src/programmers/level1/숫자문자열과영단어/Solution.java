@@ -1,4 +1,4 @@
-package programmers.숫자문자열과영단어;
+package programmers.level1.숫자문자열과영단어;
 
 public class Solution {
     public static void main(String[] args) {

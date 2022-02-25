@@ -1,4 +1,4 @@
-package programmers.로또의최고순위와최저순위;
+package programmers.level1.로또의최고순위와최저순위;
 
 import java.util.Arrays;
 import java.util.HashMap;

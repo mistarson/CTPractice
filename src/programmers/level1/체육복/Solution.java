@@ -1,8 +1,6 @@
-package programmers.체육복;
+package programmers.level1.체육복;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class Solution {
     public static void main(String[] args) {

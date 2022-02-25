@@ -1,4 +1,4 @@
-package programmers.신규아이디추천;
+package programmers.level1.신규아이디추천;
 
 public class Solution {
     //TODO 정규표현식으로 바꿀 것

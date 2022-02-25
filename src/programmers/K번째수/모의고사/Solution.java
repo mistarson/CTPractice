@@ -1,4 +1,4 @@
-package programmers.모의고사;
+package programmers.K번째수.모의고사;
 
 import java.util.*;
 
