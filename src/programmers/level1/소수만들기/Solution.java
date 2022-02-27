@@ -4,24 +4,25 @@ public class Solution {
 
     static int cnt = 0;
     static boolean[] visited;
-//TODO 이거풀어야함
+
     public static void main(String[] args) {
 
-        int[] nums = {1, 2, 3, 4};
+        int[] nums = {1, 2, 7,6,4};
 
         visited = new boolean[nums.length];
 
         System.out.println(solution(nums));
 
     }
+
     static int solution(int[] nums) {
 
-        findPrime(0,0,nums);
+        findPrime(0, 0, 0, nums);
 
         return cnt;
     }
 
-    static void findPrime(int length, int sum, int[] nums) {
+    static void findPrime(int length, int start, int sum, int[] nums) {
         if (length == 3) {
             if (sum == 0 || sum == 1) {
                 return;
@@ -35,13 +36,13 @@ public class Solution {
             return;
         }
 
-        for (int i = 0; i < nums.length; i++) {
+        for (int i = start; i < nums.length; i++) {
             if (visited[i]) {
                 continue;
             }
             visited[i] = true;
             sum += nums[i];
-            findPrime(length + 1, sum, nums);
+            findPrime(length + 1, i + 1, sum, nums);
             visited[i] = false;
             sum -= nums[i];
         }
