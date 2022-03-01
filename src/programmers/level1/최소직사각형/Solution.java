@@ -18,8 +18,6 @@ public class Solution {
                 heightMax = sizes[i][1];
             }
         }
-
-
         return widthMax * heightMax;
     }
 }
