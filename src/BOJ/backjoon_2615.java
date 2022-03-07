@@ -49,6 +49,9 @@ public class backjoon_2615 {
             }
         }
 
+        if (!isWin) {
+            System.out.println(0);
+        }
 
     }
 
@@ -77,7 +80,7 @@ public class backjoon_2615 {
         }
 
         if (canGo(ny, nx, target)) {
-            if (nx < startX && ny != startY) {
+            if (nx < startX) {
                 startX = nx;
                 startY = ny;
             }
