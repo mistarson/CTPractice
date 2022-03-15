@@ -6,7 +6,6 @@ import java.util.List;
 public class Solution {
     public static void main(String[] args) {
         String dartResult = "1D2S#10S";
-
         System.out.println(solution(dartResult));
     }
 
