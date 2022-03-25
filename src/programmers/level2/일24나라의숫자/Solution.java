@@ -1,5 +1,6 @@
 package programmers.level2.일24나라의숫자;
 
+
 public class Solution {
 
     public static void main(String[] args) {
