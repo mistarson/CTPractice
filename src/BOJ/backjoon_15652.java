@@ -8,7 +8,6 @@ import java.util.StringTokenizer;
 public class backjoon_15652 {
 
     static int N, M;
-    static List<String> list = new ArrayList<>();
     static StringBuilder sb = new StringBuilder();
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -18,40 +17,23 @@ public class backjoon_15652 {
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
 
-        backTracking(0);
+        backTracking(0, 0, "");
 
-        for (String str : list) {
-            bw.write(str+"\n");
-        }
-
+        bw.write(sb.toString());
         bw.flush();
     }
 
-    static void backTracking(int length) {
+    static void backTracking(int length, int last, String temp) {
         if (length == M) {
-            String str = convertStr(sb.toString());
-            list.add(str);
+            sb.append(temp.trim()).append("\n");
             return;
         }
 
         for (int i = 1; i <= N; i++) {
-            if (sb.length() == 0 ||Integer.parseInt(String.valueOf(sb.charAt(sb.length() - 1))) <= i) {
-                sb.append(i);
-                backTracking(length + 1);
-                sb.deleteCharAt(sb.length() - 1);
+            if (last <= i) {
+                backTracking(length + 1, i, temp+" "+i);
             }
         }
     }
 
-    static String convertStr(String str) {
-        StringBuilder sb2 = new StringBuilder();
-        for (int i = 0; i < str.length(); i++) {
-            sb2.append(str.charAt(i));
-            if (i == str.length() - 1) {
-                break;
-            }
-            sb2.append(" ");
-        }
-        return sb2.toString();
-    }
 }
