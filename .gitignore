@@ -1,2 +1,3 @@
 # Project exclude paths
-/out/
+src/Solution.java
+src/testCode.java
