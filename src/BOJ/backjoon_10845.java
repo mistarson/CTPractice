@@ -17,6 +17,7 @@ public class backjoon_10845 {
 
         int N = Integer.parseInt(br.readLine());
 
+        // 마지막에 넣은 큐 값을 얻기 위한 변수 pushValue
         int pushValue = 0;
         for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
