@@ -25,22 +25,13 @@ public class backjoon_17298 {
             // 스택이 비어 있으면 그냥 푸쉬
             if (stack.isEmpty()) {
                 stack.push(i);
-                continue;
-            }
 
-            // 현재 값이 스택의 최상위 값보다 작거나 같다면 그냥 푸쉬
-            if (seq[i] <= seq[stack.peek()]) {
-                stack.push(i);
-            }
-
-            // 현재 값이 스택의 최상위 값보다 크다면 (오큰수의 등장)
-            else {
-
+            }else {
                 //  스택에 있는 값들 중, 현재 원소 값보다 작은 값들을 모두 현재 원소 값으로 바꿔주기
                 while (!stack.isEmpty() && seq[i] > seq[stack.peek()]) {
                     seq[stack.pop()] = seq[i];
                 }
-                
+
                 // 그리고 현재 값 푸쉬
                 stack.push(i);
             }
