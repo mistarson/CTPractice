@@ -18,7 +18,6 @@ public class backjoon_17299 {
         Map<Integer, Integer> map = new HashMap<>();
         Stack<Integer> stack = new Stack<>();
 
-
         int N = Integer.parseInt(br.readLine());
         int[] numbers = new int[N];
 
@@ -54,8 +53,6 @@ public class backjoon_17299 {
                 numbers[stack.pop()] = -1;
             }
         }
-
-
 
         for (int i = 0; i < numbers.length; i++) {
             sb.append(numbers[i]).append(" ");
