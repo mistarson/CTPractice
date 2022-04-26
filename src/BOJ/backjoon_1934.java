@@ -10,6 +10,7 @@ public class backjoon_1934 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
         StringTokenizer st;
+
         int T = Integer.parseInt(br.readLine());
 
         for (int i = 0; i < T; i++) {
@@ -21,14 +22,12 @@ public class backjoon_1934 {
         }
 
         System.out.println(sb.toString());
-
     }
 
     static int gcd(int a, int b) {
         if (a < b) {
             return gcd(b, a);
         }
-
         if (b != 0) {
             return gcd(b, a % b);
         }

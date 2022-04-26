@@ -22,6 +22,7 @@ public class backjoon_2609{
     }
     
     static int gcd(int n, int m) {
+        // n >= m 일 때 호제법이 성립하므로 m이 더 크다면 앞으로 바꿔준다.
         if (n < m) {
             return gcd(m, n);
         }
