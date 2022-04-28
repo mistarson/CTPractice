@@ -13,6 +13,7 @@ public class backjoon_6588 {
 
         List<Integer> list = new ArrayList<>();
 
+        //최댓값을 저장하기 위한 변수
         int maxNumber = 0;
         while (true) {
             int n = Integer.parseInt(br.readLine());
@@ -37,10 +38,11 @@ public class backjoon_6588 {
 
         for (int i = 0; i < list.size(); i++) {
 
+            // 두 홀수 소수의 합으로 나타낼 수 있는지 없는지
             boolean flag = false;
             Integer n = list.get(i);
 
-            for (int j = 3; j <= n / 2; j++) {
+            for (int j = 3; j <= n / 2; j+=2) {
                 if (!isNotPrime[j] && !isNotPrime[n - j]) {
                     flag = true;
                     sb.append(n + " = " + j + " + " + (n-j)).append("\n");
