@@ -41,7 +41,8 @@ public class backjoon_6588 {
             // 두 홀수 소수의 합으로 나타낼 수 있는지 없는지
             boolean flag = false;
             Integer n = list.get(i);
-
+            
+            // 아리토스테네스 체의 대칭성을 이용한 로직
             for (int j = 3; j <= n / 2; j+=2) {
                 if (!isNotPrime[j] && !isNotPrime[n - j]) {
                     flag = true;
