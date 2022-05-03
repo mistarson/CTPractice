@@ -44,10 +44,8 @@ public class backjoon_1182 {
             return;
         }
 
-
-        dfs(length + 1, sum);
-        dfs(length + 1, sum + seq[length]);
-
+        dfs(sum, length + 1);
+        dfs(sum + seq[length], length + 1);
 
     }
 }
