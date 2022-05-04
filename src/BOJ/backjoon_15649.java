@@ -11,7 +11,7 @@ public class backjoon_15649 {
     static StringBuilder sb = new StringBuilder();
 
     static int N, M;
-    static boolean[] isVisited;
+    static boolean[] isVisited; // 방문처리를 위한 boolean 배열
 
     public static void main(String[] args) throws IOException {
 
@@ -21,12 +21,14 @@ public class backjoon_15649 {
 
         isVisited = new boolean[N + 1];
 
-        dfs(0);
+        backTracking(0);
 
         bw.flush();
     }
 
-    static void dfs(int length) throws IOException {
+    static void backTracking(int length) throws IOException {
+
+        //목적지인가?
         if (length == M) {
             for (int i = 0; i < sb.length(); i++) {
                 bw.write(sb.charAt(i)+ " ");
@@ -35,11 +37,14 @@ public class backjoon_15649 {
             return;
         }
 
+        // 연결된 곳을 순회
         for (int i = 1; i <= N; i++) {
+
+            // 갈수있는가? (방문한적이 있는가?)
             if (!isVisited[i]) {
                 sb.append(i);
                 isVisited[i] = true;
-                dfs(length + 1);
+                backTracking(length + 1);
                 isVisited[i] = false;
                 sb.deleteCharAt(sb.length()-1);
             }
