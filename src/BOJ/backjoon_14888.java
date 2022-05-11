@@ -43,7 +43,7 @@ public class backjoon_14888 {
         int min = Integer.MAX_VALUE;
 
         for (int i = 0; i < operatorList.size(); i++) {
-            String currentOp = operatorList.get(i);
+            String currentOp = operatorList.get(i); // + - * / +
             int temp = sequence[0];
             for (int j = 1; j < N; j++) {
                 temp = calculrate(temp, sequence[j], currentOp.charAt(j - 1));
