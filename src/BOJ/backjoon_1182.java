@@ -28,6 +28,8 @@ public class backjoon_1182 {
         }
 
         dfs(0, 0);
+
+        // S가 0일 때, 아무 원소도 부분 수열에 들어가있지 않은 상태를 --
         if (S == 0) {
             cnt--;
         }
@@ -44,8 +46,8 @@ public class backjoon_1182 {
             return;
         }
 
-        dfs(sum, length + 1);
-        dfs(sum + seq[length], length + 1);
+        dfs(sum, length + 1); //현재 원소를 부분수열에 합치지 않고 진행
+        dfs(sum + seq[length], length + 1); // 현재 원소를 부분수열에 합치고 진행
 
     }
 }
