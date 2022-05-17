@@ -15,6 +15,7 @@ public class Backjoon_15970 {
 
         N = Integer.parseInt(br.readLine());
 
+        // Key,List<Value> == 색깔, List<점의 위치>
         Map<Integer, List<Integer>> map = new HashMap<>();
 
         for (int i = 0; i < N; i++) {
