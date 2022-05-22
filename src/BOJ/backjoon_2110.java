@@ -26,9 +26,11 @@ public class backjoon_2110 {
 
         int low = 1; // 가질 수 있는 최소 거리
         int high = houses[N - 1] - houses[0];
+        int mid = 0;
+        int result = 0;
 
         while (low <= high) {
-            int mid = (high + low) / 2;
+            mid = (high + low) / 2;
 
             //설치할 수 있는 수가 설치해야할 수보다 작을 때 -> 공유기 설치 거리를 줄여야 한다!
             if (canInstall(mid) < C) {
@@ -38,10 +40,11 @@ public class backjoon_2110 {
             // 설치할 수 있는 수가 설치해야할 수보다 크거나 같을 때 -> 공유기 설치 거리를 늘려야 한다!
             else {
                 low = mid + 1;
+                result = mid;
             }
         }
 
-        System.out.println(low - 1);
+        System.out.println(mid);
 
     }
 
