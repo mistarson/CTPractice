@@ -1,6 +1,8 @@
 package BOJ;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class backjoon_2805 {
@@ -9,7 +11,6 @@ public class backjoon_2805 {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st = new StringTokenizer(br.readLine());
         int N = Integer.parseInt(st.nextToken());
         int M = Integer.parseInt(st.nextToken());
@@ -40,7 +41,6 @@ public class backjoon_2805 {
                 top = mid - 1;
             }
         }
-        bw.write(top + "");
-        bw.flush();
+        System.out.println(top);
     }
 }

@@ -50,13 +50,10 @@ public class backjoon_2512 {
                 sum += Math.min(mid, amount);
             }
 
-            if (M > sum) {
+            if (M >= sum) {
                 left = mid + 1;
-            } else if (M < sum) {
+            } else{
                 right = mid - 1;
-            } else {
-                System.out.println(mid);
-                return;
             }
 
         }
