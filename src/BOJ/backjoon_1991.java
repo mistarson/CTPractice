@@ -18,7 +18,7 @@ public class backjoon_1991 {
     public static void main(String[] args) throws IOException {
 
         N = Integer.parseInt(br.readLine());
-        tree = new char[(int) Math.pow(2, N) + 1];
+        tree = new char[(int) Math.pow(2, N)];
         Arrays.fill(tree, '0');
 
         // 배열로 구현한 트리 초기화
@@ -104,11 +104,11 @@ public class backjoon_1991 {
         int rightChildNode = start * 2 + 1;
 
         if (leftChildNode <= tree.length && tree[leftChildNode] != '0') {
-            inorder(leftChildNode);
+            postorder(leftChildNode);
         }
         if (rightChildNode <= tree.length && tree[rightChildNode] != '0') {
-            inorder(rightChildNode);
+            postorder(rightChildNode);
         }
-        inorderSB.append(tree[start]);
+        postorderSB.append(tree[start]);
     }
 }
