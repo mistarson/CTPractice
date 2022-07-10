@@ -18,7 +18,7 @@ public class backjoon_1991 {
     public static void main(String[] args) throws IOException {
 
         N = Integer.parseInt(br.readLine());
-        tree = new char[(int) Math.pow(2, N)];
+        tree = new char[(int) Math.pow(2, N) + 2];
         Arrays.fill(tree, '0');
 
         // 배열로 구현한 트리 초기화
