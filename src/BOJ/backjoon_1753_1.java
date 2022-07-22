@@ -12,7 +12,6 @@ public class backjoon_1753_1 {
     static PriorityQueue<Node> priorityQueue = new PriorityQueue<>();
     static List<List<Node>> graph = new ArrayList<>();
     static int[] dist;
-    static boolean[] isVisited;
     static final int INF = Integer.MAX_VALUE;
 
     public static void main(String[] args) throws IOException {
@@ -22,7 +21,6 @@ public class backjoon_1753_1 {
         E = Integer.parseInt(st.nextToken());
         K = Integer.parseInt(br.readLine());
 
-        isVisited = new boolean[V + 1];
         dist = new int[V + 1];
         Arrays.fill(dist, INF);
         dist[K] = 0;
@@ -44,10 +42,9 @@ public class backjoon_1753_1 {
         while (!priorityQueue.isEmpty()) {
             Node current = priorityQueue.poll();
 
-            if (isVisited[current.end]) {
+            if (dist[current.end] < current.weight) {
                 continue;
             }
-            isVisited[current.end] = true;
 
             for (Node next : graph.get(current.end)) {
                 if (dist[next.end] > dist[current.end] + next.weight) {
