@@ -20,11 +20,13 @@ public class backjoon_2251 {
             waterBottles[i] = Integer.parseInt(st.nextToken());
         }
 
-        isVisited = new boolean[waterBottles[0] + 1][waterBottles[1] + 1];
+        isVisited = new boolean[waterBottles[1] + 1][waterBottles[2] + 1];
 
-        findZeroAWaterBottle(waterBottles[1], waterBottles[2], waterBottles[3]);
+        findZeroAWaterBottle(0, 0, waterBottles[3]);
 
-        System.out.println(answer);
+        for (Integer water : answer) {
+            System.out.print(water + " ");
+        }
 
 
     }
