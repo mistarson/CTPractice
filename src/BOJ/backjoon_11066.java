@@ -29,6 +29,8 @@ public class backjoon_11066 {
                 for (int k = j - 1; k >= 0; k--) {
                     dp[k][j] = Integer.MAX_VALUE;
                     for (int l = 0; l < j - k; l++) {
+
+                        // ex) A,B,C,D ( A + BCD   ABC + D   AB + CD)
                         dp[k][j] = Math.min(dp[k][j], dp[k][k + l] + dp[l + k + 1][j]);
                     }
                     int sum = 0;
