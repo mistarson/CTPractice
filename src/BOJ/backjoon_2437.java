@@ -13,6 +13,7 @@ public class backjoon_2437 {
     public static void main(String[] args) throws IOException {
         int N = Integer.parseInt(br.readLine());
 
+
         int[] arr = new int[N];
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < N; i++) {
@@ -22,12 +23,12 @@ public class backjoon_2437 {
         Arrays.sort(arr);
 
         int sum = 0;
-        for (int i = 0; i < N - 1; i++) {
-            sum += arr[i];
-            if (sum + 1 < arr[i + 1]) {
-                System.out.println(sum + 1);
+        for (int i = 0; i < N; i++) {
+            if (sum + 1 < arr[i]) {
                 break;
             }
+            sum += arr[i];
         }
+        System.out.println(sum + 1);
     }
 }
