@@ -25,9 +25,6 @@ public class Solution {
             }
         }
 
-        for (int[] ints : map) {
-            System.out.println(Arrays.toString(ints));
-        }
         for (int i = 0; i < queries.length; i++) {
             int startRow = queries[i][0];
             int startColumn = queries[i][1];
