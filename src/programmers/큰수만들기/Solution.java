@@ -1,5 +1,7 @@
 package programmers.큰수만들기;
 
+import java.util.Stack;
+
 public class Solution {
     public static void main(String[] args) {
         String number = "4177252841";
@@ -10,23 +12,27 @@ public class Solution {
     }
     static String solution(String number, int k) {
         String answer = "";
-        StringBuilder sb = new StringBuilder();
-        int count = number.length() - k;
+        Stack<Character> stack = new Stack<>();
+        int removeCnt = k;
 
-        int startIndex = 0;
-        for (int i = 0; i < count; i++) {
-            int allowance = number.length() - (count - sb.length());
-            int maxNumber = Integer.MIN_VALUE;
-            for (int j = startIndex; j <= allowance; j++) {
-                int compareNumber = number.charAt(j) - '0';
-
-                if (maxNumber < compareNumber) {
-                    maxNumber = compareNumber;
-                    startIndex = j + 1;
-                }
+        for (int i = 0; i < number.length(); i++) {
+            char c = number.charAt(i);
+            while (!stack.isEmpty() && stack.peek() < c && removeCnt > 0) {
+                removeCnt--;
+                stack.pop();
             }
-            sb.append(maxNumber);
+            stack.push(c);
         }
-        return answer = sb.toString();
+
+        int size = stack.size();
+        if (size == number.length()) {
+            for (int i = 0; i < k ; i++) {
+                stack.pop();
+            }
+        }
+        for (int i = 0; i < number.length() - k; i++) {
+            answer = stack.pop() + answer;
+        }
+        return answer;
     }
 }
