@@ -65,7 +65,7 @@ public class backjoon_20057 {
 
         // 직선 5%
         int area1_r = hurri_r + dr[dir] * 3;
-        int area1_c = hurri_c + dr[dir] * 3;
+        int area1_c = hurri_c + dc[dir] * 3;
         accumulateSand += isOutElseAddSand(area1_r, area1_c, sand_r, sand_c, 0.05);
 
         // 오른쪽 10%
