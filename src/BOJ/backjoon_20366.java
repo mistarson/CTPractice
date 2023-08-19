@@ -19,44 +19,35 @@ public class backjoon_20366 {
 
         Arrays.sort(snow);
 
-        int arraySize = (N * (N - 1)) / 2;
-        SnowMan[] snowCombi = new SnowMan[arraySize];
-        int idx = 0;
-        for (int i = 0; i < N; i++) {
-            for (int j = i + 1; j < N; j++) {
-                snowCombi[idx++] = new SnowMan(j, i, snow[i] + snow[j]);
-            }
-        }
-
-        Arrays.sort(snowCombi);
         int minDiff = Integer.MAX_VALUE;
-        for (int i = 0; i < snowCombi.length - 1; i++) {
-            for (int j = i + 1; j < snowCombi.length; j++) {
-                if (snowCombi[i].bottomIdx != snowCombi[j].bottomIdx && snowCombi[i].topIdx != snowCombi[j].topIdx && snowCombi[i].topIdx != snowCombi[j].bottomIdx && snowCombi[i].bottomIdx != snowCombi[j].topIdx) {
-                    minDiff = Math.min(minDiff, Math.abs(snowCombi[j].totalDim - snowCombi[i].totalDim));
-                    break;
+        for (int i = 0; i < N - 1; i++) {
+            for (int j = i + 1; j < N; j++) {
+                int snowMan1 = snow[i] + snow[j];
+                int left = 0;
+                int right = N - 1;
+                while (left < right) {
+                    if (i == left) {
+                        left++;
+                    }
+                    if (j == right) {
+                        right--;
+                    }
+
+                    int snowMan2 = snow[left] + snow[right];
+                    if (snowMan1 > snowMan2) {
+                        minDiff = Math.min(minDiff, snowMan1 - snowMan2);
+                        left++;
+                    } else if (snowMan1 < snowMan2) {
+                        minDiff = Math.min(minDiff, snowMan2 - snowMan1);
+                        right--;
+                    } else {
+                        System.out.println(0);
+                        return;
+                    }
                 }
             }
         }
 
         System.out.println(minDiff);
-
-    }
-
-    static class SnowMan implements Comparable<SnowMan>{
-        int bottomIdx;
-        int topIdx;
-        int totalDim;
-
-        public SnowMan(int bottomIdx, int topIdx, int totalDim) {
-            this.bottomIdx = bottomIdx;
-            this.topIdx = topIdx;
-            this.totalDim = totalDim;
-        }
-
-        @Override
-        public int compareTo(SnowMan o) {
-            return totalDim - o.totalDim;
-        }
     }
 }
