@@ -9,68 +9,47 @@ public class Solution {
         int[] solution = new Solution().solution(genres, plays);
         System.out.println(Arrays.toString(solution));
     }
+
     public int[] solution(String[] genres, int[] plays) {
-        Map<String, Integer> mostPlayGenres = new HashMap<>();
-        Map<String, List<Music>> map = new HashMap<>();
+        Map<String, Integer> songPlayCountMap = new HashMap<>();
+        Map<String, List<Song>> songMap = new HashMap<>();
 
         for (int i = 0; i < genres.length; i++) {
             String genre = genres[i];
-            int cnt = plays[i];
-            mostPlayGenres.put(genre, mostPlayGenres.getOrDefault(genre, 0) + cnt);
-            if (!map.containsKey(genre)) {
-                map.put(genre, new ArrayList<>());
+            int play = plays[i];
+
+            songPlayCountMap.put(genre, songPlayCountMap.getOrDefault(genre, 0) + play);
+            if (!songMap.containsKey(genre)) {
+                songMap.put(genre, new ArrayList<>());
             }
-            map.get(genre).add(new Music(i, cnt));
+            List<Song> songList = songMap.get(genre);
+            songList.add(new Song(i, play));
         }
 
-        List<Music> musicList = new ArrayList<>();
-        for (String key : mostPlayGenres.keySet()) {
-            musicList.add(new Music(key, mostPlayGenres.get(key)));
-        }
+        List<String> sortedGenres = new ArrayList<>(songPlayCountMap.keySet());
+        sortedGenres.sort((a, b) -> songPlayCountMap.get(b) - songPlayCountMap.get(a));
 
-        Collections.sort(musicList);
-        List<Integer> bestAlbumList = new ArrayList<>();
-        for (Music music : musicList) {
-            List<Music> musicListByGenre = map.get(music.genre);
-            Collections.sort(musicListByGenre);
-            for (int i = 0; i < map.get(music.genre).size(); i++) {
-                if (i == 2) {
-                    break;
-                }
-                bestAlbumList.add(musicListByGenre.get(i).id);
+        List<Integer> answer = new ArrayList<>();
+        for (String sortedGenre : sortedGenres) {
+            List<Song> songList = songMap.get(sortedGenre);
+            songList.sort((a, b) -> b.cnt - a.cnt);
+            answer.add(songList.get(0).id);
+            if (songList.size() > 1) {
+                answer.add(songList.get(1).id);
             }
         }
 
-        int[] answer = new int[bestAlbumList.size()];
-        for (int i = 0; i < bestAlbumList.size(); i++) {
-            answer[i] = bestAlbumList.get(i);
-        }
-
-        return answer;
+        return answer.stream().mapToInt(i -> i).toArray();
     }
 
-    static class Music implements Comparable<Music> {
+    class Song{
 
-        String genre;
         int id;
         int cnt;
 
-        public Music(int id, int cnt) {
+        public Song(int id, int cnt) {
             this.id = id;
             this.cnt = cnt;
-        }
-
-        public Music(String genre, int cnt) {
-            this.genre = genre;
-            this.cnt = cnt;
-        }
-
-        @Override
-        public int compareTo(Music o) {
-            int comp1 = Integer.compare(o.cnt, cnt);
-            if (comp1 == 0) {
-                return Integer.compare(id, o.id);
-            } else return comp1;
         }
     }
 }
